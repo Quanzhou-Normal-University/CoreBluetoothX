@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CbS-FN-7mF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreBluetoothX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N9F-Qp-a0e">
+                                <rect key="frame" x="8" y="831" width="398" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-ch-SEy">
+                                        <rect key="frame" x="0.0" y="0.0" width="199" height="31"/>
+                                        <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Central">
+                                            <color key="baseForegroundColor" red="0.21176470589999999" green="0.97539392660000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="q4J-jK-Den" kind="show" identifier="CentralRoleSegue" id="66S-X0-kcX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bll-Nf-Ztr">
+                                        <rect key="frame" x="199" y="0.0" width="199" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Peripheral">
+                                            <color key="baseForegroundColor" red="0.21176470589999999" green="0.97539392660000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="cj4-8r-2ev" kind="show" identifier="PerpheralRoleSegue" id="wDQ-8v-BcO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL4-fq-DXD">
+                                <rect key="frame" x="191.5" y="438" width="31.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.0" green="0.25882352941176467" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AL4-fq-DXD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3dY-sb-okK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N9F-Qp-a0e" secondAttribute="trailing" constant="8" id="81s-6u-bOj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N9F-Qp-a0e" secondAttribute="bottom" id="NZH-Yg-YWU"/>
+                            <constraint firstItem="N9F-Qp-a0e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="T0f-Ar-Lfm"/>
+                            <constraint firstItem="AL4-fq-DXD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mr3-HY-RGW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HzB-sb-Of3"/>
+                    <connections>
+                        <outlet property="bluetoothStateLabel" destination="AL4-fq-DXD" id="3Ra-0u-gfl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939.13043478260875" y="69.642857142857139"/>
+        </scene>
+        <!--外围-->
+        <scene sceneID="MNU-ZF-C1s">
+            <objects>
+                <viewController id="cj4-8r-2ev" customClass="PeripheralViewController" customModule="CoreBluetoothX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="alC-2U-nhr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否开启广播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-3t-FFZ">
+                                <rect key="frame" x="155" y="123" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xym-6N-fwq">
+                                <rect key="frame" x="182.5" y="165" width="51" height="31"/>
+                                <connections>
+                                    <action selector="advertiseSwitchDidChange:" destination="cj4-8r-2ev" eventType="valueChanged" id="p8D-hO-Lin"/>
+                                </connections>
+                            </switch>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XZz-BB-I7p">
+                                <rect key="frame" x="8" y="235" width="398" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="QBr-nE-9vu"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cj4-8r-2ev" id="pGf-cv-MY5"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RcB-lY-W5U"/>
+                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="RcB-lY-W5U" firstAttribute="trailing" secondItem="XZz-BB-I7p" secondAttribute="trailing" constant="8" id="5Q7-eT-S1S"/>
+                            <constraint firstItem="dAo-3t-FFZ" firstAttribute="top" secondItem="RcB-lY-W5U" secondAttribute="top" constant="35" id="LqP-SC-hGq"/>
+                            <constraint firstItem="xym-6N-fwq" firstAttribute="centerX" secondItem="alC-2U-nhr" secondAttribute="centerX" id="Ud7-Wk-Qqs"/>
+                            <constraint firstItem="xym-6N-fwq" firstAttribute="top" secondItem="dAo-3t-FFZ" secondAttribute="bottom" constant="21" id="aMS-MI-J7o"/>
+                            <constraint firstItem="dAo-3t-FFZ" firstAttribute="centerX" secondItem="alC-2U-nhr" secondAttribute="centerX" id="b8p-ja-0uK"/>
+                            <constraint firstItem="XZz-BB-I7p" firstAttribute="top" secondItem="xym-6N-fwq" secondAttribute="bottom" constant="39" id="tSH-sD-eW2"/>
+                            <constraint firstItem="XZz-BB-I7p" firstAttribute="leading" secondItem="RcB-lY-W5U" secondAttribute="leading" constant="8" id="v7g-w7-Qmb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="外围" id="KsA-yH-0ek"/>
+                    <connections>
+                        <outlet property="advertiseSwitch" destination="xym-6N-fwq" id="ahq-7x-eva"/>
+                        <outlet property="textView" destination="XZz-BB-I7p" id="NPD-9O-hzb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgc-Gw-oSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886.9565217391305" y="504.91071428571428"/>
+        </scene>
+        <!--中心-->
+        <scene sceneID="Zdm-Rr-XW7">
+            <objects>
+                <viewController id="q4J-jK-Den" customClass="CentralViewController" customModule="CoreBluetoothX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SjK-eH-UQV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-FI-iLu" customClass="CustomButton" customModule="CoreBluetoothX" customModuleProvider="target">
+                                <rect key="frame" x="157" y="123" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="4sB-nh-O5i"/>
+                                    <constraint firstAttribute="height" constant="100" id="DDS-ew-xYH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="扫描"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleScanning" destination="q4J-jK-Den" eventType="touchUpInside" id="eQZ-gy-ShU"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KY3-Ql-R2E">
+                                <rect key="frame" x="8" y="289" width="398" height="450"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="u3x-YX-SVG"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nz1-fe-BsQ"/>
+                        <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Yas-FI-iLu" firstAttribute="top" secondItem="nz1-fe-BsQ" secondAttribute="top" constant="35" id="9g2-g6-q8w"/>
+                            <constraint firstItem="Yas-FI-iLu" firstAttribute="centerX" secondItem="SjK-eH-UQV" secondAttribute="centerX" id="MCe-gD-lL8"/>
+                            <constraint firstItem="KY3-Ql-R2E" firstAttribute="leading" secondItem="nz1-fe-BsQ" secondAttribute="leading" constant="8" id="aVQ-vQ-BtK"/>
+                            <constraint firstItem="KY3-Ql-R2E" firstAttribute="top" secondItem="Yas-FI-iLu" secondAttribute="bottom" constant="66" id="eR5-6O-rAk"/>
+                            <constraint firstItem="nz1-fe-BsQ" firstAttribute="trailing" secondItem="KY3-Ql-R2E" secondAttribute="trailing" constant="8" id="nVZ-Cn-Kpx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="中心" id="4UF-Od-dOO"/>
+                    <connections>
+                        <outlet property="scanButton" destination="Yas-FI-iLu" id="Yvz-rp-OjB"/>
+                        <outlet property="textView" destination="KY3-Ql-R2E" id="oDX-JG-nO5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hm8-Mv-xmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="-160"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NA5-HR-jMr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CbS-FN-7mF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQp-1b-Na6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4Tj-TL-Bxo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTC-eI-VFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="69.642857142857139"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Yas-FI-iLu">
+            <size key="intrinsicContentSize" width="53" height="31"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

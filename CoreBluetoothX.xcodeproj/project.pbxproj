@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C34212A27489E7F0087E8B8 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C34212927489E7F0087E8B8 /* TransferService.swift */; };
+		1C46B3A3274899730087445D /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C46B3A2274899730087445D /* PeripheralViewController.swift */; };
 		1C5315112747C23100B70045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5315102747C23100B70045 /* AppDelegate.swift */; };
 		1C5315132747C23100B70045 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5315122747C23100B70045 /* SceneDelegate.swift */; };
 		1C5315152747C23100B70045 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5315142747C23100B70045 /* ViewController.swift */; };
 		1C5315182747C23100B70045 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5315162747C23100B70045 /* Main.storyboard */; };
 		1C53151A2747C23300B70045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5315192747C23300B70045 /* Assets.xcassets */; };
 		1C53151D2747C23300B70045 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C53151B2747C23300B70045 /* LaunchScreen.storyboard */; };
+		1C5315252747D0A600B70045 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5315242747D0A600B70045 /* Const.swift */; };
+		1C5315272747D8D800B70045 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5315262747D8D700B70045 /* CustomButton.swift */; };
+		1CDA489E2747DC4E00AA3A76 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA489D2747DC4E00AA3A76 /* CentralViewController.swift */; };
+		1CDA48A22747DE5700AA3A76 /* TransferServiceScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA48A12747DE5700AA3A76 /* TransferServiceScanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C34212927489E7F0087E8B8 /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
+		1C46B3A2274899730087445D /* PeripheralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 		1C53150D2747C23100B70045 /* CoreBluetoothX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBluetoothX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5315102747C23100B70045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C5315122747C23100B70045 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +32,10 @@
 		1C5315192747C23300B70045 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C53151C2747C23300B70045 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C53151E2747C23300B70045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C5315242747D0A600B70045 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		1C5315262747D8D700B70045 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1CDA489D2747DC4E00AA3A76 /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
+		1CDA48A12747DE5700AA3A76 /* TransferServiceScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferServiceScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,45 @@
 		1C53150F2747C23100B70045 /* CoreBluetoothX */ = {
 			isa = PBXGroup;
 			children = (
+				1C53151E2747C23300B70045 /* Info.plist */,
+				1C5315242747D0A600B70045 /* Const.swift */,
+				1C34212927489E7F0087E8B8 /* TransferService.swift */,
+				1CDA48A12747DE5700AA3A76 /* TransferServiceScanner.swift */,
+				1CDA48A02747DE2E00AA3A76 /* View */,
+				1CDA489C2747DC3000AA3A76 /* ViewController */,
+				1CDA489F2747DE0200AA3A76 /* SupportFiles */,
+			);
+			path = CoreBluetoothX;
+			sourceTree = "<group>";
+		};
+		1CDA489C2747DC3000AA3A76 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C5315142747C23100B70045 /* ViewController.swift */,
+				1CDA489D2747DC4E00AA3A76 /* CentralViewController.swift */,
+				1C46B3A2274899730087445D /* PeripheralViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1CDA489F2747DE0200AA3A76 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
 				1C5315102747C23100B70045 /* AppDelegate.swift */,
 				1C5315122747C23100B70045 /* SceneDelegate.swift */,
-				1C5315142747C23100B70045 /* ViewController.swift */,
 				1C5315162747C23100B70045 /* Main.storyboard */,
 				1C5315192747C23300B70045 /* Assets.xcassets */,
 				1C53151B2747C23300B70045 /* LaunchScreen.storyboard */,
-				1C53151E2747C23300B70045 /* Info.plist */,
 			);
-			path = CoreBluetoothX;
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		1CDA48A02747DE2E00AA3A76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C5315262747D8D700B70045 /* CustomButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +181,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C5315152747C23100B70045 /* ViewController.swift in Sources */,
+				1C5315252747D0A600B70045 /* Const.swift in Sources */,
+				1CDA48A22747DE5700AA3A76 /* TransferServiceScanner.swift in Sources */,
 				1C5315112747C23100B70045 /* AppDelegate.swift in Sources */,
+				1C46B3A3274899730087445D /* PeripheralViewController.swift in Sources */,
 				1C5315132747C23100B70045 /* SceneDelegate.swift in Sources */,
+				1C34212A27489E7F0087E8B8 /* TransferService.swift in Sources */,
+				1CDA489E2747DC4E00AA3A76 /* CentralViewController.swift in Sources */,
+				1C5315272747D8D800B70045 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -292,11 +340,13 @@
 				DEVELOPMENT_TEAM = PGN5857P43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreBluetoothX/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "是否允许此App使用你的蓝牙功能，以便于连接外围设备？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,11 +370,13 @@
 				DEVELOPMENT_TEAM = PGN5857P43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreBluetoothX/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "是否允许此App使用你的蓝牙功能，以便于连接外围设备？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
