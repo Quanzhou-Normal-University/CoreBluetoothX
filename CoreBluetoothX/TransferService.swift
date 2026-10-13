@@ -118,53 +118,84 @@ extension TransferService: CBPeripheralManagerDelegate {
         sendData()
     }
     
-	// MARK: - 发送具体MTU
+	// MARK: - 发送数据给订阅了特征的中心设备
+    /// 该函数被两个地方调用:
+    /// 1. 远程中心设备订阅特征时 didSubscribeTo (首次触发)
+    /// 2. 蓝牙发送队列就绪时 peripheralManagerIsReady(toUpdateSubscribers:) (继续发送剩余数据)
+    /// 采用分片机制: 将大数据拆成 MTU(20字节) 大小的数据包逐包发送, 最后发送 "EOM" 结束标记
     func sendData() {
+        // 使用内嵌静态变量记录 EOM(End Of Message) 是否处于待发送状态
+        // 因为 updateValue 可能因队列满而失败, 所以需要记住 EOM 还没发出去, 等队列就绪后重试
         struct eom {
-            static var pending = false
+            static var pending = false// 队列是否满了
         }
-        
-        // MARK: - 发送数据结束标记并返回有没有发送成功
+		
+        // MARK: - 发送结束标记 EOM 的辅助方法
+        /// EOM 用于告知接收方: 本次数据已经全部发完, 可以组装完整消息了
+        /// - Returns: true 表示 EOM 发送成功或已经发送过; false 表示底层队列满了, 需要等待下次队列就绪再重试
         @discardableResult func sendEOM() -> Bool {
+            // 先把 pending 标记为 true, 表示现在正尝试发送 EOM
             eom.pending = true
-            
+			
+            // 将字符串 "EOM" 编码为 UTF-8 Data
             let data = ("EOM" as NSString).data(using: String.Encoding.utf8.rawValue)
+            // 通过 updateValue 推送给所有已订阅该特征的中心设备
+            // onSubscribedCentrals: nil 表示发给所有订阅者
             if peripheralManager.updateValue(data!, for: transferCharacteristic, onSubscribedCentrals: nil) {
+                // 推送成功, 重置 pending 状态
                 eom.pending = false
             }
+            // 返回是否成功发送
             return !eom.pending
         }
-        
+		
+        // 蓝牙 BLE 默认 ATT MTU 通常为 23, 减去 3 字节 ATT 头, 剩余 20 字节作为有效载荷
+        // 这里固定每次最多发 20 字节, 保证兼容性
         let MTU = 20
+		
+        // 如果上次 EOM 没发出去(队列满了), 先尝试重发 EOM 重发成功就可以直接返回, 因为这意味着整批数据已经完整送达
         if eom.pending {
             if sendEOM() {
                 return
             }
         }
-        
+		
+        // 边界检查: 如果当前索引已经超过或等于数据总长, 说明数据已经发完直接返回, 不再重复发送 EOM
         if sendDataIndex! >= dataToSend!.length {
             return
         }
-        
+		
+        // didSend 标记本次 updateValue 是否成功入队
         var didSend = true
+        // 循环分片发送, 只要底层队列未满就一直发
         while didSend {
-            // 指定要发送数据的长度限制
-            // 如果剩余数据大于最大传输单元MTU就指定为MTU
+            // 计算本次还能发送多少字节: 总长度 - 已发送索引
             var amountToSend = dataToSend!.length - sendDataIndex!
+            // 如果剩余数据超过 MTU, 则本次只发 MTU 字节
             if amountToSend > MTU {
                 amountToSend = MTU
             }
-            
+			
+            // 从 dataToSend 的当前索引位置截取 amountToSend 长度的子数据块
+            // dataToSend!.bytes 指向 NSData 内部字节缓冲区的首地址, 加上 sendDataIndex 偏移得到当前分片起始地址
             let chunk = Data.init(bytes: dataToSend!.bytes + sendDataIndex!, count: amountToSend)
-            // 外围设备管理器将值更新到连接的中心设备上如果成功返回true 如果底层队列满了返回false 等到队列就绪时继续发送剩余数据
+
+            // 调用 Core Bluetooth 的 updateValue 将分片推送到订阅的中心设备
+            // 返回 true: 数据已成功放入发送队列
+            // 返回 false: 底层队列已满, 需要停止发送, 等待 peripheralManagerIsReady(toUpdateSubscribers:) 回调再继续
             didSend = peripheralManager.updateValue(chunk, for: transferCharacteristic, onSubscribedCentrals: nil)
             if !didSend {
+                // 队列满了, 退出循环, 保留 sendDataIndex 不变, 下次队列就绪时从当前位置继续
                 return
             }
-            
+			
+            // 发送成功, 打印日志便于调试
             print("\(Date.init()) 外围设备管理器 已经更新了特征值 \(String.init(data: chunk, encoding: .utf8) ?? "")")
-            
+			
+            // 将索引向前推进本次发送的字节数
             sendDataIndex! += amountToSend
+			
+            // 如果索引已经到达或超过数据总长度, 说明所有分片都已发完发送 EOM 结束标记然后结束本次发送流程
             if sendDataIndex! >= dataToSend!.length {
                 sendEOM()
                 return
