@@ -5,7 +5,7 @@
 //  Created by 杨俊艺 on 2021/11/19.
 //
 
-// MARK: - 转场标识符
+// MARK: - Main.storyboard 中定义的转场标识符用来控制是否可以跳转
 let kCentralRoleSegue = "CentralRoleSegue"
 let kPeripheralRoleSegue = "PerpheralRoleSegue"
 

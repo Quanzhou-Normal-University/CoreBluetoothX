@@ -35,8 +35,7 @@ extension UIView {
         rotateAnimation.fromValue = fromValue
         rotateAnimation.toValue = toValue
         rotateAnimation.duration = duration
-        
-        if let completionDelegate = completionDelegate {
+        if let completionDelegate {
             rotateAnimation.delegate = completionDelegate as? CAAnimationDelegate
         }
         layer.add(rotateAnimation, forKey: nil)

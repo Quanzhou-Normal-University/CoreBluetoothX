@@ -9,15 +9,15 @@ import UIKit
 import CoreBluetooth
 
 class ViewController: UIViewController {
+	
     @IBOutlet weak var bluetoothStateLabel: UILabel!
     
     // MARK: - 中心设备管理器
+	var isBluetoothPoweredOn = false
     var centralManager: CBCentralManager!
-    var isBluetoothPoweredOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 中心设备初始化即刻开始发送事件
         centralManager = CBCentralManager.init(delegate: self, queue: nil)
     }
@@ -33,7 +33,6 @@ class ViewController: UIViewController {
             return true
         }
     }
-
 }
 
 // MARK: - 中心设备管理器委托回调
@@ -63,9 +62,8 @@ extension ViewController {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
         let alertController = UIAlertController.init(title: "蓝牙连接", message: "请到设置打开蓝牙后进行操作", preferredStyle: .alert)
-            alertController.addAction(okAction)
-            alertController.addAction(openSettings)
-        
+		alertController.addAction(okAction)
+		alertController.addAction(openSettings)
         present(alertController, animated: true, completion: nil)
     }
 }

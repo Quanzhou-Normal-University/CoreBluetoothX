@@ -9,6 +9,7 @@ import UIKit
 import CoreBluetooth
 
 class PeripheralViewController: UIViewController, UITextViewDelegate {
+	
     @IBOutlet weak var advertiseSwitch: UISwitch!
     @IBOutlet weak var textView: UITextView!
     
@@ -16,8 +17,6 @@ class PeripheralViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         transferService = TransferService.init(delegate: self)
     }
     
@@ -46,7 +45,6 @@ class PeripheralViewController: UIViewController, UITextViewDelegate {
         textView.resignFirstResponder()
         navigationItem.rightBarButtonItem = nil
     }
-    
 }
 
 extension PeripheralViewController: TransferServiceDelegate {
@@ -61,5 +59,4 @@ extension PeripheralViewController: TransferServiceDelegate {
     func getDataToSend() -> NSData {
         return textView.text.data(using: .utf8)! as NSData
     }
-    
 }
